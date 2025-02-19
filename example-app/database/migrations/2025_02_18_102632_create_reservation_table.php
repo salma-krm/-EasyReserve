@@ -14,17 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reservation', function (Blueprint $table) {
-            $table->increments ('id');
+            $table->id(); 
             $table->string('name', 255);
-            $table->timestamp('created_at')->nullable();
-            $table->date('date_reservation');
-            $table->enum('status' , array('pending', 'en cours', 'terminer'))->default('pending');
-            $table->integer('user_id')->unsigned(); 
-            $table->foreign('user_id')->references('id')->on('users'); 
-            $table->integer('salle_id')->unsigned(); 
-            $table->foreign('salle_id')->references('id')->on('salle');
-            $table->timestamps();
+            $table->date('date_debut');
+            $table->date('date_fine');
+            $table->enum('status', ['pending', 'en cours', 'terminer'])->default('pending');
+            $table->bigInteger('user_id')->unsigned(); 
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('salle_id')->unsigned(); 
+            $table->foreign('salle_id')->references('id')->on('Salle')->onDelete('cascade');
+            $table->timestamps(); 
         });
+        
     }
 
     /**
