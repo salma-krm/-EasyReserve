@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('salle', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('capacite'); 
-            $table->decimal('price', 8, 2);
-            $table->timestamps();
+        Schema::table('reservation', function (Blueprint $table) {
+            $table->integer('salle_id')->unsigned() ;
+            $table->foreign('salle_id')->references('id')->on('salles'); 
         });
     }
 
@@ -29,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salle');
+        Schema::table('reservation', function (Blueprint $table) {
+            $table->dropColumn('salle_id');
+        });
     }
 };

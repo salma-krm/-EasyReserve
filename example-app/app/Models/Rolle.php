@@ -9,4 +9,7 @@ class Rolle extends Model
 {
     protected $fillable = ['name', 'description'];
     use HasFactory;
+    public function user(){
+        return $this->hasMany(User::class);
+    } 
 }

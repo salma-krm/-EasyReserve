@@ -25,7 +25,7 @@ class User extends Authenticatable
     ];
     public function rolle()
     {
-        return $this->belongsTo(Rolle::class);
+        return $this->hashOne(Rolle::class);
     }
 
     /**
@@ -46,4 +46,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function role()
+    {
+        return $this->belongsTo(Rolle::class);
+    }
+
+ 
+
+    public function reservation()
+    {
+        return $this->haseMany(Reservation::class);
+    }
 }

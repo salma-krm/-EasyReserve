@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\SalleController;
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/salle/create',[SalleController::class,'create']);
+Route::post('/salle/reservation',[ReservationController::class,'ajouterReservation']);
+Route::get('/salle/show',[SalleController::class,'show']);
+Route::get('/salle',[SalleController::class,'get']);
+Route::get('/salle/{id}/update',[SalleController::class,'update']);
+
+// Route::get('/salle', function () {
+//     return view('home');
+// });
+Route::get('/createsalle',function(){
+    return view('createSalle');
+});
+Route::get('/updateSalle',function(){
+    return view('updateSalle');
+});
+
+Route::post('/salle/edit',[SalleController::class,'edit']);
+
+Route::post('/salle/{id}/delete',[SalleController::class,'delete']);
+
+
+
+
