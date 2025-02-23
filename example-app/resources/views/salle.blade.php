@@ -2,28 +2,29 @@
 <html>
 
 <head>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
- 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     :root {
       --sidebar-width: 250px;
       --header-height: 60px;
-      --primary-color: rgb(67, 7, 172);
-      --primary-dark: rgb(87, 96, 101);
-      --secondary-color: #f8f9fa;
-      --text-color: #2c3e50;
-      --hover-color: #e8f5e9;
+      --primary-color: #1a237e;
+      --primary-dark: #1a237e;
+      --secondary-color: #f1f1f1;
+      --text-color: #343a40;
+      --hover-color: #e0f7fa;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
     }
 
     body {
-      background: #f0f2f5;
+      background-color: #f4f7fb;
+      font-size: 16px;
     }
 
     .dashboard {
@@ -31,24 +32,23 @@
       min-height: 100vh;
     }
 
-    /* Enhanced Sidebar Styles */
+    /* Sidebar */
     .sidebar {
       width: var(--sidebar-width);
-      background: white;
-      padding: 20px;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      background: #fff;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
       position: fixed;
       height: 100vh;
-      overflow-y: auto;
-      border-right: 1px solid #e0e0e0;
+      padding-top: 20px;
+      padding-right: 10px;
     }
 
     .logo {
-      font-size: 24px;
-      font-weight: bold;
+      font-size: 28px;
+      font-weight: 700;
       color: var(--primary-color);
-      margin-bottom: 30px;
-      padding: 10px;
+      margin-bottom: 20px;
+      text-align: center;
     }
 
     .nav-item {
@@ -68,12 +68,6 @@
     .nav-link:hover {
       background-color: var(--hover-color);
       color: var(--primary-color);
-      transform: translateX(5px);
-    }
-
-    .nav-link i {
-      margin-right: 10px;
-      font-size: 18px;
     }
 
     .nav-link.active {
@@ -81,7 +75,11 @@
       color: white;
     }
 
-    /* Enhanced Search Input */
+    .nav-link i {
+      margin-right: 10px;
+    }
+
+    /* Search Input */
     .search-container {
       position: relative;
       width: 300px;
@@ -89,19 +87,15 @@
 
     .search-input {
       width: 100%;
-      padding: 12px 20px 12px 45px;
-      border: 2px solid #e0e0e0;
+      padding: 12px 20px;
       border-radius: 25px;
+      border: 2px solid #ddd;
       font-size: 14px;
-      transition: all 0.3s ease;
-      color: var(--text-color);
-      background-color: white;
     }
 
     .search-input:focus {
       outline: none;
-      border-color: var(--success-color);
-      box-shadow: 0 0 0 3px rgba(62, 46, 204, 0.2);
+      border-color: var(--primary-color);
     }
 
     .search-icon {
@@ -110,41 +104,39 @@
       top: 50%;
       transform: translateY(-50%);
       color: #999;
-      font-size: 18px;
     }
 
-    /* Main Content Styles */
+    /* Main Content */
     .main-content {
-      flex: 1;
       margin-left: var(--sidebar-width);
       padding: 20px;
+      width: 100%;
     }
 
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 30px;
-      background: white;
       padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin-bottom: 30px;
     }
 
-    /* Enhanced Dashboard Cards */
+    /* Cards */
     .dashboard-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 20px;
       margin-bottom: 30px;
     }
 
     .card {
       background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      border-left: 4px solid var(--primary-color);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
     }
 
@@ -153,72 +145,41 @@
     }
 
     .card-title {
-      font-size: 16px;
+      font-size: 18px;
       color: var(--text-color);
-      margin-bottom: 10px;
     }
 
     .card-value {
       font-size: 28px;
-      font-weight: bold;
       color: var(--primary-color);
+      font-weight: bold;
     }
 
-    /* Enhanced Notification Badge */
-    .notification-badge {
-      background: #e74c3c;
-      color: white;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 12px;
-      margin-left: 8px;
-    }
-
-    /* Projects List */
-    .projects-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .project-card {
+    /* Table */
+    table {
+      width: 100%;
       background: white;
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-top: 30px;
+      overflow: hidden;
     }
 
-    .project-card:hover {
-      transform: translateY(-3px);
+    table thead {
+      background-color: var(--primary-color);
+      color: white;
     }
 
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 15px;
+    table td,
+    table th {
+      padding: 12px;
+      text-align: center;
     }
 
-    .project-title {
-      font-size: 20px;
-      font-weight: bold;
-      color: var(--text-color);
-    }
-
-    .project-budget {
-      font-size: 18px;
-      color: var(--primary-color);
-      font-weight: bold;
-    }
-
-    /* Action Buttons */
+    /* Button */
     .btn {
-      padding: 10px 20px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      border-radius: 5px;
+      padding: 8px 16px;
       font-weight: 500;
     }
 
@@ -227,9 +188,17 @@
       color: white;
     }
 
+    .btn-danger {
+      background-color: #dc3545;
+      color: white;
+    }
+
     .btn-primary:hover {
       background-color: var(--primary-dark);
-      transform: translateY(-2px);
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
     }
 
     /* Responsive Design */
@@ -240,8 +209,7 @@
       }
 
       .logo {
-        font-size: 20px;
-        text-align: center;
+        font-size: 22px;
       }
 
       .nav-link span {
@@ -253,12 +221,23 @@
       }
 
       .search-container {
-        width: 200px;
+        width: 250px;
       }
 
       .dashboard-cards {
         grid-template-columns: 1fr;
       }
+
+      .no-underline-white {
+        text-decoration: none;
+        color: black;
+      }
+
+      .no-underline-white:hover {
+        color: white;
+        
+      }
+
     }
   </style>
 </head>
@@ -276,16 +255,14 @@
           </a>
         </div>
         <div class="nav-item">
-          <a href="/all/salle" class="nav-link">
+          <a href="/reservation/show" class="nav-link">
             <i class="bi bi-briefcase"></i>
             <span>reservation</span>
           </a>
         </div>
         <div class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="bi bi-bell"></i>
-            <span>salle</span>
-            <span class="notification-badge">5</span>
+          <a href="/salle/show" class="nav-link">
+            <span>salles</span>
           </a>
         </div>
       </nav>
@@ -293,80 +270,82 @@
 
     <!-- Main Content Area -->
     <div class="main-content">
-      <div class="header">
-        <h1>Tableau de bord</h1>
-        <div class="search-container">
-          <i class="bi bi-search search-icon"></i>
-          <input type="text" class="search-input" placeholder="Rechercher...">
+      <div class="content-frame">
+        <div class="header">
+          <h1>Tableau de bord</h1>
+          <div class="search-container">
+            <i class="bi bi-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Rechercher...">
+          </div>
         </div>
-      </div>
 
-      <!-- Dashboard Summary Cards -->
-      <div class="dashboard-cards">
-        <div class="card">
-          <div class="card-title">reservation Totaux</div>
-          <div class="card-value">24</div>
+        <!-- Dashboard Summary Cards -->
+        <div class="dashboard-cards">
+          <div class="card">
+            <div class="card-title">reservation Totaux</div>
+            <div class="card-value">24</div>
+          </div>
+          <div class="card">
+            <div class="card-title">salle totaux</div>
+            <div class="card-value">12</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Nouveaux Avis</div>
+            <div class="card-value">3</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Notifications</div>
+            <div class="card-value">5</div>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-title">salle totaux</div>
-          <div class="card-value">12</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Nouveaux Avis</div>
-          <div class="card-value">3</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Notifications</div>
-          <div class="card-value">5</div>
-        </div>
-      </div>
-      
-        
-        <button  class="header" type="button" ><a href="/createsalle">Ajouter Salle</a></button>
-      
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>photo</th>
-            <th>capacite</th>
-            <th>location</th>
-            <th>start_date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($salles as $salle)
-          <tr>
-            <td>{{$salle->title}}</td>
-              
-            <td>{{$salle->description}}</td>
-            <td>{{$salle->photo}}</td>
-            <td>{{$salle->capacite}}</td>
-            <td>{{$salle->location}}</td>
-            <td>{{$salle->start_date}}</td>
-            <td class="text-end">
-              <!-- Actions -->
-              <button class="btn d-inline-flex btn-sm btn-primary mx-1" type="button"
-                data-bs-toggle="modal" data-bs-target="#editModal_">
-                <input type="hidden" name="id" value="{{$salle->id}}">
-                <span class="pe-2">
-                  <a href="/salle/{{$salle->id}}/update">edit</a>
-                </span>
-              </button>
-              <form method="post" action="/salle/{{$salle->id}}/delete" class="d-inline">
-                @csrf
-                <input type="hidden" name="id" value="{{$salle->id}}">
-                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i>delete</button>
-              </form>
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-     
 
+        <button class="btn btn-primary mb-3" type="button"><a href="/createsalle" style="color: white;">Ajouter Salle</a></button>
+
+        <!-- Salle List Table -->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Photo</th>
+              <th>Capacité</th>
+              <th>Location</th>
+              <th>Start Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($salles as $salle)
+            <tr>
+              <td>{{$salle->title}}</td>
+              <td>{{$salle->description}}</td>
+              <td>{{$salle->photo}}</td>
+              <td>{{$salle->capacite}}</td>
+              <td>{{$salle->location}}</td>
+              <td>{{$salle->start_date}}</td>
+              <td class="text-end">
+                <!-- Actions -->
+                <button class="btn d-inline-flex  " type="button"
+                  data-bs-toggle="modal" data-bs-target="#editModal_">
+                  <input type="hidden" name="id" value="{{$salle->id}}">
+                  <span >
+                    <a href="/salle/{{$salle->id}}/update" class="btn btn-primary btn-sm ">edit</a>
+                  </span>
+
+                </button>
+                <form method="post" action="/salle/{{$salle->id}}/delete" class="d-inline">
+                  @csrf
+                  <input type="hidden" name="id" value="{{$salle->id}}">
+                  <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i>delete</button>
+                </form>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

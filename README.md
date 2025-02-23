@@ -7,4 +7,8 @@
  # Tag 2:18/02/2025
  # j'ai faire la connection avec data base et comment cree table in laravel (drop,update) et creation de la controller and model .
  # routes qui definir les  URL qui auxquelles les users accedent pour interagir  avec Application . route  correspond fonction ou controlleur qui traite la requette htpp . route  est un dependensi . class route et apres appeler function statique (request(client) /   definir response(server) );
+ # tag 3 :19/02/2025
+ # Aujourd'hui, j'ai étudié les Eloquent Relationships et les ai appliquées dans mon code. 
+ # Tag  4 : 20/02/2025
+#   j'ai resolu le probleme de boostrap  et j'ai affiché les salle  et trvaille sur les reservation et  travaille surtout sur la logique metier de reservation.
  

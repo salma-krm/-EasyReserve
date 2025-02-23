@@ -24,10 +24,8 @@ Route::post('/salle/reservation',[ReservationController::class,'ajouterReservati
 Route::get('/salle/show',[SalleController::class,'show']);
 Route::get('/salle',[SalleController::class,'get']);
 Route::get('/salle/{id}/update',[SalleController::class,'update']);
+Route::get('/reservation/show',[ReservationController::class,'showreservation']);
 
-// Route::get('/salle', function () {
-//     return view('home');
-// });
 Route::get('/createsalle',function(){
     return view('createSalle');
 });

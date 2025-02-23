@@ -36,8 +36,14 @@ class ReservationController extends Controller
                     }
                 }
             } else {
-                return redirect('/salle');
+                return redirect('/salle')->withErrors(['error' => 'La salle est déjà réservée pour cette période.']);
             }
         }
+    }
+    public function showreservation(){
+
+        $reservations = Reservation::all();
+
+        return  view('resevation',compact('reservations'));
     }
 }
